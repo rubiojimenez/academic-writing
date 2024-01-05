@@ -1,0 +1,55 @@
+% Dr Jesús Rubio
+% University of Surrey
+% j.rubiojimenez@surrey.ac.uk
+%
+% Created: January 2024
+% Modified: -- 
+
+\documentclass[a4paper]{article}
+
+\usepackage[margin=2.5cm]{geometry}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+
+% Blind footnote
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
+\begin{document}
+\pagenumbering{gobble}
+
+\Large
+\begin{center}
+[Your title]
+\vspace{0.3cm}
+
+% Author names and affiliations
+\large
+[Corresponding author],$^{1,*}$\blfootnote{
+$^*$[Your email address]
+}
+[Another author]$^2$\\
+\vspace{0.3cm}
+\small  
+$^1$[Affiliation]\\
+$^2$[Another affiliation]\\
+\end{center}
+
+% Abstract
+\normalsize
+
+[Your abstract]
+
+% References
+\footnotesize
+~~\\[1pt]
+[Author$\,$1, Author$\,$2, \dots,  \emph{Title}, Journal reference, (Year)]\\
+
+\end{document}
