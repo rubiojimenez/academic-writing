@@ -18,13 +18,7 @@
 
 \renewcommand{\familydefault}{\sfdefault}
 \definecolor{mydarkblue}{RGB}{0, 51, 102} 
-\newcommand{\referee}[1]{%
-    \noindent\fcolorbox{mydarkblue}{white}{%
-        \parbox[c]{\dimexpr\textwidth-2\fboxsep-2\fboxrule}{%
-            \textcolor{mydarkblue}{\itshape #1}%
-        }%
-    }%
-}
+\newcommand{\referee}[1]{\noindent\fcolorbox{mydarkblue}{white}{\parbox[c]{\dimexpr\textwidth-2\fboxsep-2\fboxrule}{\textcolor{mydarkblue}{\itshape #1}}}}
 
 % Replies
 \begin{document}
