@@ -1,20 +1,32 @@
-% Dr Jesús Rubio
-% University of Surrey
-% j.rubiojimenez@surrey.ac.uk
-%
-% Created: January 2024
-% Modified: -- 
+\documentclass[a4paper, 11pt]{article}
+\usepackage[margin=3cm, top=2.5cm]{geometry}
 
-\documentclass[a4paper]{article}
+\usepackage{helvet} % font
+\renewcommand{\familydefault}{\sfdefault}
 
-\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace} % line spacing
+\setstretch{1.27}
 
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{caption}
 
-% Blind footnote
+\usepackage{enumitem} % references
+\setlist[itemize,enumerate]{nosep} 
+\usepackage[superscript,biblabel]{cite}
+\newlength{\bibitemsep}\setlength{\bibitemsep}{.05\baselineskip plus .05\baselineskip minus .05\baselineskip}
+\newlength{\bibparskip}\setlength{\bibparskip}{0pt}
+\let\oldthebibliography\thebibliography
+\renewcommand\thebibliography[1]{%
+  \oldthebibliography{#1}%
+  \setlength{\parskip}{\bibitemsep}%
+  \setlength{\itemsep}{\bibparskip}%
+}
+
+% blind footnote
 \newcommand\blfootnote[1]{%
   \begingroup
   \renewcommand\thefootnote{}\footnote{#1}%
@@ -25,31 +37,42 @@
 \begin{document}
 \pagenumbering{gobble}
 
-\Large
+\large
 \begin{center}
-[Your title]
+Title
 \vspace{0.3cm}
 
 % Author names and affiliations
 \large
-[Corresponding author],$^{1,*}$\blfootnote{
-$^*$[Your email address]
+Author$^{*}$\blfootnote{
+$^*$Email address
 }
-[Another author]$^2$\\
-\vspace{0.3cm}
+\vspace{0.3cm}\\
 \small  
-$^1$[Affiliation]\\
-$^2$[Another affiliation]\\
+Affiliation and address\\
 \end{center}
 
 % Abstract
+
 \normalsize
 
-[Your abstract]
+\begin{multicols}{2}
+
+Abstract.\cite{reference}
 
 % References
-\footnotesize
-~~\\[1pt]
-[Author$\,$1, Author$\,$2, \dots,  \emph{Title}, Journal reference, (Year)]\\
+\small
+\renewcommand\refname{\vspace{-2em}}
+\begin{thebibliography}{2}
+
+\setlength{\itemsep}{0pt} 
+\setlength{\parskip}{0pt} 
+
+\bibitem{reference}
+Author 1, Author 2, Author 3, \emph{et al.}, journal reference, year.
+
+\end{thebibliography}
+
+\end{multicols}
 
 \end{document}
