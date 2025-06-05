@@ -1,0 +1,88 @@
+% Dr Jesús Rubio
+% jesus@rubiojimenez.com
+%
+% Created: November 2022
+% Modified: June 2025
+
+\documentclass[12pt]{article}
+
+\usepackage[a4paper, left=3cm, right=3cm, top=3cm, bottom=3cm]{geometry} % format
+\pagenumbering{arabic}
+\setlength{\parindent}{0pt}
+\newcommand{\forceindent}{\leavevmode{\parindent=1em\indent}}
+\setlength{\parskip}{0.45em}
+\usepackage{times}
+
+\usepackage[utf8]{inputenc} % spelling
+\usepackage[english]{babel}
+
+\usepackage{graphicx} % images
+\usepackage{marvosym}
+
+\usepackage{xcolor}	 % colours
+\definecolor{myblue}{RGB}{34,31,150}
+\definecolor{mygrey}{RGB}{105,105,105}
+\newcommand*{\headcolor}[1]{\textcolor{mygrey}{#1}}
+
+\usepackage[breaklinks=true,colorlinks=true,linkcolor=myblue,urlcolor=myblue]{hyperref} % hyperlinks
+
+\usepackage{fancyhdr} % headers and footers
+\pagestyle{fancy}
+\fancyhf{}
+\chead{  \Mundus\, \href{}{} % add your website
+$\vert$
+\Letter\, \href{mailto:}{} % add your email address 
+\\[-12.5pt]
+}
+\renewcommand{\footrulewidth}{0.4pt}
+
+% letter
+\begin{document}
+
+\bigskip
+
+\begin{flushright}
+    \textbf{Your name}\\
+    Address line 1\\
+    Address line 2\\
+    City or town\\
+    Post code\\
+    Country
+\end{flushright}
+~\\[-40pt]
+
+\today\\[-5pt]
+
+\textbf{Addressee}\\
+Address line 1\\
+Address line 2\\
+City or town\\
+Post code\\
+Country\\[-5pt]
+
+\textbf{Position: name of the position}\\
+	
+Dear Addressee,
+
+\noindent
+I am writing to apply for \dots
+
+\noindent
+Paragraph 1
+
+\noindent
+Paragraph 2
+
+\dots
+
+I look forward to the opportunity of further discussing my application. 
+Many thanks for your time.\\
+
+Yours sincerely,\\[-0.65cm]
+
+%\includegraphics[width=7cm]{} % add your handwritten signature
+\vspace{2cm} % replace with a suitable value
+
+Your name\\
+
+\end{document}
