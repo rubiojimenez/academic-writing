@@ -1,0 +1,24 @@
+#!/bin/sh
+
+# Script to clean LaTeX auxiliary files
+
+# Dr Jesús Rubio
+# jesus@rubiojimenez.com
+
+# Created: February 2024
+# Last modified: June 2025
+
+# Extensions to be deleted; add more as needed
+delete_files() {
+    local extension="$1"
+    find . -type f -name "*.$extension" -exec rm -f {} +
+}
+
+EXTENSIONS="aux bbl blg log out toc" # assumes a pdflatex + bibtex workflow
+
+for ext in $EXTENSIONS; do
+    delete_files "$ext"
+done
+
+# Auxiliary files to be deleted; add more as needed
+[ -f ./mainNotes.bib ] && rm ./mainNotes.bib
