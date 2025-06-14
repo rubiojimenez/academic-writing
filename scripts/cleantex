@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Script to clean LaTeX auxiliary files
 
@@ -21,4 +21,5 @@ for ext in $EXTENSIONS; do
 done
 
 # Auxiliary files to be deleted; add more as needed
-[ -f ./mainNotes.bib ] && rm ./mainNotes.bib
+file=(*Notes.bib)
+[ -f "${file[0]}" ] && rm "${file[0]}"
