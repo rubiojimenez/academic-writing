@@ -1,0 +1,49 @@
+#!/bin/bash
+
+# Script to compile LaTeX documents
+
+# Dr Jesús Rubio
+# jesus@rubiojimenez.com
+
+# Created: July 2024
+# Last modified: June 2025
+
+# Check if a filename argument is provided
+if [ $# -eq 0 ]; then
+    echo "Usage: $0 <filename.tex>"
+    exit 1
+fi
+
+filename="$1"
+
+# Check if the *.tex file exists
+if [ ! -f "$filename" ]; then
+    echo "Error: File '$filename' not found!"
+    exit 1
+fi
+
+# First LaTeX pass to generate .aux and other metadata
+pdflatex -interaction=nonstopmode -halt-on-error "$filename" > /dev/null
+if [ $? -ne 0 ]; then
+    echo "Error during pdflatex pass. Please check the logs"
+    exit 1
+fi
+
+# Run BibTeX on all .aux files to process citations
+for auxfile in *.aux; do
+    bibtex "${auxfile%.aux}" > /dev/null
+done
+
+# Additional LaTeX passes to resolve references, footnotes, and table of contents
+pdflatex -interaction=nonstopmode -halt-on-error "$filename" > /dev/null
+pdflatex -interaction=nonstopmode -halt-on-error "$filename" > /dev/null
+
+# Final LaTeX pass (visible) to confirm clean output and display any remaining warnings
+pdflatex -interaction=nonstopmode -halt-on-error "$filename" > /dev/null
+
+if [ $? -eq 0 ]; then
+    echo "Compilation successful."
+else
+    echo "Error during final pdflatex pass. Please check the logs."
+    exit 1
+fi
