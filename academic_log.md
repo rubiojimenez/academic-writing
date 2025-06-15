@@ -1,3 +1,11 @@
+<!--
+Dr Jesús Rubio
+jesus@rubiojimeenz.com
+
+Created: March 2025
+Modified: June 2025
+-->
+
 # Academic Activity Log
 
 ## Publications
