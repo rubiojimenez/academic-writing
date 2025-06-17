@@ -16,15 +16,15 @@ Modified: June 2025
 
 ## Grants
 
-| Date | Scheme | Role | Outcome |
-|------|--------|------|---------|
-|      |        |      |         |
+| Starting Date | Scheme | Role | Duration | Amount (£) | Funding Body | Status |
+|---------------|--------|------|----------|------------|--------------|--------|
+|               |        |      |          |            |              |        |
 
-## Refereeing
+## Awards
 
-| Date | Type | Journal/Organisation | Identifier |
-|------|------|----------------------|------------|
-|      |      |                      |            |
+| Date | Title | Organisation | Comments |
+|------|-------|--------------|----------|
+|      |       |              |          |
 
 ## Talks & Conferences
 
@@ -37,6 +37,12 @@ Modified: June 2025
 | Term | Module | Level | Hours | Comments |
 |------|--------|-------|-------|----------|
 |      |        |       |       |          |
+
+## Refereeing
+
+| Date | Type | Journal/Organisation | Identifier |
+|------|------|----------------------|------------|
+|      |      |                      |            |
 
 ## Other Academic Activities
 
