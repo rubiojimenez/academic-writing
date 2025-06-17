@@ -26,7 +26,7 @@ Modified: June 2025
 |------|-------|--------------|----------|
 |      |       |              |          |
 
-## Talks & Conferences
+## Oral contributions
 
 | Date | Title | Event/Location | Type |
 |------|-------|----------------|------|
