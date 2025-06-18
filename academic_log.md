@@ -40,15 +40,15 @@ Modified: June 2025
 
 ## Refereeing
 
-| Date | Type | Journal/Organisation | Identifier |
+| Date | Type | Journal/Org. | Identifier |
 |------|------|----------------------|------------|
 |      |      |                      |            |
 
 ## Other Academic Activities
 
-| Date | Task/Activity  | Organisation/Dept | Comments |
-|------|----------------|-------------------|----------|
-|      |                |                   |          |
+| Date | Task/Activity  | Organisation/Dept. | Comments |
+|------|----------------|--------------------|----------|
+|      |                |                    |          |
 
 ## Budget Tracking (code)
 
