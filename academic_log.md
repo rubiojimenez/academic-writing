@@ -10,9 +10,9 @@ Modified: June 2025
 
 ## Publications
 
-| Date | Title | Journal/Conference | Comments |
-|------|-------|--------------------|----------|
-|      |       |                    |          |
+| Date | https://doi.org/... | Journal reference | Comments |
+|------|---------------------|-------------------|----------|
+|      |                     |                   |          |
 
 ## Grants
 
