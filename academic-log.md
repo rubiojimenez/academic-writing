@@ -1,48 +1,48 @@
 <!--
 Dr Jesús Rubio
-jesus@rubiojimeenz.com
+jesus@rubiojimenez.com
 
 Created: March 2025
-Modified: June 2025
+Modified: July 2025
 -->
 
 # Academic Activity Log
 
 ## Publications
 
-| Date | https://doi.org/... | Journal reference | Comments |
-| ---- | ------------------- | ----------------- | -------- |
-|      |                     |                   |          |
+| Date | Title | Journal/Conference | Comments |
+|------|-------|--------------------|----------|
+|      |       |                    |          |
 
 ## Grants
 
-| Starting Date | Scheme | Role | Duration | Amount (£) | Funding Body | Status |
-| ------------- | ------ | ---- | -------- | ---------- | ------------ | ------ |
-|               |        |      |          |            |              |        |
+| Date | Scheme | Role | Outcome |
+|------|--------|------|---------|
+|      |        |      |         |
 
 ## Awards
 
-| Date | Title | Organisation | Comments |
-| ---- | ----- | ------------ | -------- |
-|      |       |              |          |
+| Date | Title | Organisation | Comments  |
+| ---- | ------| ------------ | --------- |
+|      |       |              |           |
 
 ## Oral contributions
 
-| Date | Title | Event/Location | Type |
-| ---- | ----- | -------------- | ---- |
-|      |       |                |      |
+| Date | Event/Location | Comments |
+| ---- | -------------- | -------- |
+|      |                |          |
 
 ## Teaching
 
 | Term | Module | Level | Hours | Comments |
-| ---- | ------ | ----- | ----- | -------- |
+|------|--------|-------|-------|----------|
 |      |        |       |       |          |
 
 ## Refereeing
 
-| Date | Type | Journal/Org.         | Identifier |
-| ---- | ---- | -------------------- | ---------- |
-|      |      |                      |            |
+| Date | Type | Journal/Org. | Identifier |
+|------|------|--------------|------------|
+|      |      |              |            |
 
 ## Other Academic Activities
 
