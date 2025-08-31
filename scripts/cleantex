@@ -6,7 +6,7 @@
 # jesus@rubiojimenez.com
 
 # Created: February 2024
-# Last modified: July 2025
+# Last modified: August 2025
 
 # Extensions to be deleted; add more as needed
 delete_files() {
@@ -14,7 +14,7 @@ delete_files() {
     find . -type f -name "*.$extension" -exec rm -f {} +
 }
 
-EXTENSIONS="aux bbl blg end log nav out snm toc" # assumes a pdflatex + bibtex workflow
+EXTENSIONS="aux bbl blg end gz log nav out snm toc " # assumes a pdflatex + bibtex workflow
 
 for ext in $EXTENSIONS; do
     delete_files "$ext"
