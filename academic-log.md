@@ -6,7 +6,7 @@ Created: March 2025
 Modified: July 2025
 -->
 
-# Academic Activity Log
+# Academic activity log
 
 ## Publications
 
@@ -44,13 +44,13 @@ Modified: July 2025
 |------|------|--------------|------------|
 |      |      |              |            |
 
-## Other Academic Activities
+## Other academic activities
 
 | Date | Task/Activity  | Organisation/Dept. | Comments |
 | ---- | -------------- | ------------------ | -------- |
 |      |                |                    |          |
 
-## Budget Tracking (code)
+## Budget tracking (code)
 
 | Date | Description | Amount (£) |
 | ---- | ----------- | ---------- |
