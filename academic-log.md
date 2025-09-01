@@ -3,7 +3,7 @@ Dr Jesús Rubio
 jesus@rubiojimenez.com
 
 Created: March 2025
-Modified: July 2025
+Modified: September 2025
 -->
 
 # Academic activity log
