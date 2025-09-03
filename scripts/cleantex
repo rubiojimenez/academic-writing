@@ -14,7 +14,7 @@ delete_files() {
     find . -type f -name "*.$extension" -exec rm -f {} +
 }
 
-EXTENSIONS="aux bbl blg end fdb_latexmk fls gz log nav out snm toc " # assumes a pdflatex + bibtex workflow
+EXTENSIONS="aux bbl blg end fdb_latexmk fls gz log nav out snm toc " 
 
 for ext in $EXTENSIONS; do
     delete_files "$ext"
