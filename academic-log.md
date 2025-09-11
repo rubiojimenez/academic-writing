@@ -35,13 +35,13 @@ Modified: September 2025
 ## Teaching
 
 | Term | Module | Level | Hours | Comments |
-|------|--------|-------|-------|----------|
+| ---- | ------ | ----- | ----- | -------- |
 |      |        |       |       |          |
 
 ## Refereeing
 
 | Date | Type | Journal/Org. | Identifier |
-|------|------|--------------|------------|
+| ---- | ---- | ------------ | ---------- |
 |      |      |              |            |
 
 ## Other academic activities
