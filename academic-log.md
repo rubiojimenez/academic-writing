@@ -10,15 +10,15 @@ Modified: September 2025
 
 ## Publications
 
-| Date | Title | Journal/Conference | Comments |
-|------|-------|--------------------|----------|
-|      |       |                    |          |
+| Date | Project | Journal/Ref. | Comments |
+| ---- | ------- | ------------ | -------- |
+|      |         |              |          |
 
 ## Grants
 
-| Date | Scheme | Role | Outcome |
-|------|--------|------|---------|
-|      |        |      |         |
+| Date  | Scheme | Role | Duration | Amount (£) | Funding Body | Status |
+| ----- | ------ | ---- | -------- | ---------- | ------------ | ------ |
+|       |        |      |          |            |              |        |  
 
 ## Awards
 
