@@ -46,7 +46,7 @@ In my current setup, this yields the following list (alphabetised):
     tecosaur.latex-utilities
     the0807.uv-toolkit
     timonwong.shellcheck
-    vv13.markdown-auto-preview
+    vv13.markdown-auto-preview        
     yzhang.markdown-all-in-one
 
 ## 2. Installing extensions
