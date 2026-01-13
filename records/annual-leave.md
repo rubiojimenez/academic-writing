@@ -19,7 +19,7 @@ Modified: 2026-01
 **Employee:**  
 **Organisation:**
 
-_Days = working days only._
+*Working days only.*
 
 ## Academic year 20XX/20XX
 
