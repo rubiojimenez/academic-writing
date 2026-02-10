@@ -21,7 +21,7 @@ Modified: 2026-01
 Full abstract text goes here.
 
 **Event:**  
-**Date submitted:** DD/MM/YYYY
+**Date:** DD/MM/YYYY
 
 ### Title of abstract 2
 
@@ -29,4 +29,4 @@ Full abstract text goes here.
 Full abstract text goes here.
 
 **Event:**  
-**Date submitted:** DD/MM/YYYY
+**Date:** DD/MM/YYYY
