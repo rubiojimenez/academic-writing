@@ -7,7 +7,7 @@ fontsize: 12pt
 <!--
 Author: Jesús Rubio
 Email: jesus@rubiojimenez.com
-Modified: 2026-01
+Modified: 2026-02
 -->
 
 # A personal VSCodium configuration
@@ -26,13 +26,13 @@ All currently installed extensions can be displayed by opening a terminal and ru
 
 In my current setup, this yields the following list (alphabetised):
 
-    davidanson.vscode-markdownlint
     ecmel.vscode-html-css
     hamza-aziane.obsidian-dark
     james-yu.latex-workshop
     mads-hartmann.bash-ide-vscode
     ms-python.debugpy
     ms-python.python
+    ms-python.vscode-python-envs
     ms-toolsai.jupyter
     ms-toolsai.jupyter-keymap
     ms-toolsai.jupyter-renderers
@@ -46,8 +46,6 @@ In my current setup, this yields the following list (alphabetised):
     tecosaur.latex-utilities
     the0807.uv-toolkit
     timonwong.shellcheck
-    vv13.markdown-auto-preview        
-    yzhang.markdown-all-in-one
 
 ## 2. Installing extensions
 
