@@ -1,0 +1,64 @@
+#!/usr/bin/env python3
+
+# Author: Jesús Rubio
+# Email: jesus@rubiojimenez.com
+# Created: 2026-02
+# Modified: --
+
+# Script to sort BibTeX (.bib) files by citation key and sort fields within each entry
+
+import sys
+import os
+import bibtexparser
+import bibtexparser.bwriter
+
+def sort_bibtex_file(input_file, output_file):
+    with open(input_file, "r", encoding="utf-8") as bibtex_file:
+        bib_database = bibtexparser.load(bibtex_file)
+
+    bib_database.entries = sorted(bib_database.entries, key=lambda x: x["ID"].lower())
+
+    for entry in bib_database.entries:
+        fields = {k: v for k, v in entry.items() if k not in ["ENTRYTYPE", "ID"]}
+        sorted_fields = dict(sorted(fields.items(), key=lambda x: x[0].lower()))
+        new_entry = {"ENTRYTYPE": entry["ENTRYTYPE"], "ID": entry["ID"]}
+        new_entry.update(sorted_fields)
+        entry.clear()
+        entry.update(new_entry)
+
+    writer = bibtexparser.bwriter.BibTexWriter()
+    writer.order_entries_by = None
+    writer.indent = "    "
+
+    with open(output_file, "w", encoding="utf-8") as bibfile:
+        bibfile.write(writer.write(bib_database))
+
+
+if __name__ == "__main__":
+    if len(sys.argv) != 2:
+        print("Usage: sortbib <name>")
+        sys.exit(1)
+
+    name = sys.argv[1]
+
+    if name.endswith(".bib"):
+        name = name[:-4]
+
+    input_file = f"{name}.bib"
+
+    if not os.path.isfile(input_file):
+        print(f"Error: file '{input_file}' not found")
+        sys.exit(1)
+
+    tmp_file = f"{input_file}.tmp"
+
+    try:
+        sort_bibtex_file(input_file, tmp_file)
+        os.replace(tmp_file, input_file)
+    except Exception as e:
+        try:
+            if os.path.exists(tmp_file):
+                os.remove(tmp_file)
+        except Exception:
+            pass
+        raise
