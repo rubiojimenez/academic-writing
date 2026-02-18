@@ -1,8 +1,9 @@
 #!/bin/bash
+
 # Author: Jesús Rubio
 # Email: jesus@rubiojimenez.com
 # Created: 2024-02
-# Modified: 2026-01
+# Modified: 2026-02
 
 # Script to clean LaTeX auxiliary files
 
