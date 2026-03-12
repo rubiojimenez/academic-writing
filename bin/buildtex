@@ -159,6 +159,10 @@ def aux_requires_bibtex(aux_path: Path) -> bool:
     return any(marker in content for marker in bib_markers)
 
 
+def get_bibunit_stems(texfile: Path) -> list[str]:
+    return sorted(path.stem for path in texfile.parent.glob("bu*.aux"))
+
+
 def build_document(texfile: Path) -> None:
     stem = texfile.stem
     aux_path = texfile.with_suffix(".aux")
@@ -169,12 +173,21 @@ def build_document(texfile: Path) -> None:
         if aux_requires_bibtex(aux_path):
             run_bibtex(stem)
 
-        for _ in range(2):
+        run_pdflatex(texfile)
+
+        bibunit_stems = get_bibunit_stems(texfile)
+        if bibunit_stems:
+            for bu_stem in bibunit_stems:
+                run_bibtex(bu_stem)
+
+            run_pdflatex(texfile)
+            run_pdflatex(texfile)
+        else:
             run_pdflatex(texfile)
 
     except subprocess.CalledProcessError:
         fail("Error during LaTeX build. Please check the logs.")
-
+        
 
 def delete_file(path: Path) -> None:
     try:
@@ -202,9 +215,20 @@ def clean_targets(
     for ext in delete_extensions:
         delete_file(texfile.with_suffix(f".{ext}"))
 
+    parent = texfile.parent
+
+    for path in parent.glob("bu*.aux"):
+        delete_file(path)
+
+    for path in parent.glob("bu*.blg"):
+        delete_file(path)
+
+    if not keep_bbl:
+        for path in parent.glob("bu*.bbl"):
+            delete_file(path)
+
     if delete_notes_bib:
         delete_file(texfile.with_name(f"{texfile.stem}Notes.bib"))
-
 
 def determine_mode(args: argparse.Namespace) -> str:
     flag_to_mode = {
