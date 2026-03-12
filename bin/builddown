@@ -3,42 +3,97 @@
 # Author: Jesús Rubio
 # Email: jesus@rubiojimenez.com
 # Created: 2025-12
-# Modified: 2026-02
+# Modified: 2026-03
 
 """
-Compile a Markdown file to PDF using Pandoc + XeLaTeX.
+Compile one or more Markdown files to PDF using Pandoc + XeLaTeX.
 
-Usage:
+Examples:
     builddown file.md
+    builddown --meta meta.yaml header.md 20*.md
+    builddown --meta meta.yaml header.md 20*.md -o file.pdf
 """
 
+import argparse
+import glob
 import subprocess
 import sys
 from pathlib import Path
 
 
+def expand_inputs(patterns: list[str]) -> list[str]:
+    files: list[str] = []
+
+    for pattern in patterns:
+        matches = sorted(glob.glob(pattern))
+        if matches:
+            files.extend(matches)
+        else:
+            files.append(pattern)
+
+    return files
+
+
 def main() -> None:
-    if len(sys.argv) != 2:
-        print("Usage: builddown file.md", file=sys.stderr)
+    parser = argparse.ArgumentParser(
+        prog="builddown",
+        description="Compile Markdown file(s) to PDF using Pandoc + XeLaTeX.",
+    )
+    parser.add_argument(
+        "--meta",
+        type=Path,
+        help="YAML metadata file to pass to Pandoc.",
+    )
+    parser.add_argument(
+        "-o",
+        "--output",
+        type=Path,
+        help="Output PDF file.",
+    )
+    parser.add_argument(
+        "inputs",
+        nargs="+",
+        help="Input Markdown files or glob patterns.",
+    )
+
+    args = parser.parse_args()
+
+    if args.meta and not args.meta.is_file():
+        print(f"Error: metadata file not found: {args.meta}", file=sys.stderr)
         sys.exit(1)
 
-    src = Path(sys.argv[1])
+    inputs = expand_inputs(args.inputs)
 
-    if src.suffix != ".md":
-        print("Error: input file must have .md extension", file=sys.stderr)
+    if not inputs:
+        print("Error: no input files found", file=sys.stderr)
         sys.exit(1)
 
-    if not src.is_file():
-        print(f"Error: file not found: {src}", file=sys.stderr)
-        sys.exit(1)
+    for name in inputs:
+        path = Path(name)
+        if not path.is_file():
+            print(f"Error: file not found: {path}", file=sys.stderr)
+            sys.exit(1)
+        if path.suffix != ".md":
+            print(f"Error: input file must have .md extension: {path}", file=sys.stderr)
+            sys.exit(1)
 
-    out = src.with_suffix(".pdf")
+    if args.output:
+        out = args.output
+    elif len(inputs) == 1:
+        out = Path(inputs[0]).with_suffix(".pdf")
+    else:
+        out = Path("output.pdf")
+
+    cmd = ["pandoc"]
+
+    if args.meta:
+        cmd.extend(["--metadata-file", str(args.meta)])
+
+    cmd.extend(inputs)
+    cmd.extend(["-o", str(out), "--pdf-engine=xelatex"])
 
     try:
-        subprocess.run(
-            ["pandoc", src, "-o", out, "--pdf-engine=xelatex"],
-            check=True,
-        )
+        subprocess.run(cmd, check=True)
     except FileNotFoundError:
         print("Error: pandoc not found on PATH", file=sys.stderr)
         sys.exit(127)
