@@ -1,45 +1,250 @@
-#!/bin/bash
+#!/usr/bin/env python3
 
 # Author: Jesús Rubio
 # Email: jesus@rubiojimenez.com
 # Created: 2024-07
-# Modified: 2026-02
+# Modified: 2026-03
 
-# Script to compile LaTeX documents
+"""
+Compile LaTeX documents and optionally clean build artefacts.
 
-# Basic checks
-if [ $# -eq 0 ]; then
-    echo "Usage: $0 <filename.tex>"
-    exit 1
-fi
+Usage:
+    buildtex file.tex
+    buildtex --pdf file.tex
+    buildtex --arxiv file.tex
+    buildtex --clean file.tex
 
-filename="$1"
+Modes:
+    default     Build normally, keep all generated files
+    --pdf       Build, then clean; keep .pdf
+    --arxiv     Build, then clean; keep .bbl
+    --clean     Build, then clean
+"""
 
-if [ ! -f "$filename" ]; then
-    echo "Error: File '$filename' not found!"
-    exit 1
-fi
+from __future__ import annotations
 
-# LaTeX passes
-pdflatex -interaction=nonstopmode -halt-on-error "$filename" > /dev/null
+import argparse
+import subprocess
+import sys
+from pathlib import Path
+from typing import Final, TypedDict
 
-if [ $? -ne 0 ]; then
-    echo "Error during pdflatex pass. Please check the logs"
-    exit 1
-fi
 
-for auxfile in *.aux; do
-    bibtex "${auxfile%.aux}" > /dev/null
-done
+COMMON_DELETE_EXTENSIONS: Final[list[str]] = [
+    "aux",
+    "blg",
+    "end",
+    "fdb_latexmk",
+    "fls",
+    "gz",
+    "log",
+    "nav",
+    "out",
+    "snm",
+    "toc",
+]
 
-pdflatex -interaction=nonstopmode -halt-on-error "$filename" > /dev/null
-pdflatex -interaction=nonstopmode -halt-on-error "$filename" > /dev/null
-pdflatex -interaction=nonstopmode -halt-on-error "$filename" > /dev/null
 
-# Compilation status
-if [ $? -eq 0 ]; then
-    echo "Build successful."
-else
-    echo "Build failed."
-    exit 1
-fi
+class ModeConfig(TypedDict):
+    build: bool
+    clean: bool
+    keep_pdf: bool
+    keep_bbl: bool
+    message: str
+
+
+MODE_CONFIG: Final[dict[str, ModeConfig]] = {
+    "default": {
+        "build": True,
+        "clean": False,
+        "keep_pdf": True,
+        "keep_bbl": True,
+        "message": "Build successful.",
+    },
+    "pdf": {
+        "build": True,
+        "clean": True,
+        "keep_pdf": True,
+        "keep_bbl": False,
+        "message": "Build successful. Cleaned; kept .pdf.",
+    },
+    "arxiv": {
+        "build": True,
+        "clean": True,
+        "keep_pdf": False,
+        "keep_bbl": True,
+        "message": "Build successful. Cleaned for arXiv; kept .bbl.",
+    },
+    "clean": {
+        "build": True,
+        "clean": True,
+        "keep_pdf": False,
+        "keep_bbl": False,
+        "message": "Build successful. Cleaned.",
+    },
+}
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        prog="buildtex",
+        description="Compile LaTeX documents and optionally clean build artefacts.",
+    )
+
+    mode_group = parser.add_mutually_exclusive_group()
+    mode_group.add_argument(
+        "--pdf",
+        action="store_true",
+        help="Build, then clean; keep .pdf.",
+    )
+    mode_group.add_argument(
+        "--arxiv",
+        action="store_true",
+        help="Build, then clean; keep .bbl.",
+    )
+    mode_group.add_argument(
+        "--clean",
+        action="store_true",
+        help="Build, then clean.",
+    )
+
+    parser.add_argument("filename", help="Input .tex file")
+
+    return parser.parse_args()
+
+
+def fail(message: str, code: int = 1) -> None:
+    print(message, file=sys.stderr)
+    sys.exit(code)
+
+
+def run_command(command: list[str], not_found_message: str) -> None:
+    try:
+        subprocess.run(
+            command,
+            check=True,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+        )
+    except FileNotFoundError:
+        fail(not_found_message, 127)
+    except subprocess.CalledProcessError:
+        raise
+
+
+def run_pdflatex(texfile: Path) -> None:
+    run_command(
+        ["pdflatex", "-interaction=nonstopmode", "-halt-on-error", str(texfile)],
+        "Error: pdflatex not found on PATH.",
+    )
+
+
+def run_bibtex(stem: str) -> None:
+    run_command(
+        ["bibtex", stem],
+        "Error: bibtex not found on PATH.",
+    )
+
+
+def aux_requires_bibtex(aux_path: Path) -> bool:
+    if not aux_path.is_file():
+        return False
+
+    try:
+        content = aux_path.read_text(encoding="utf-8", errors="ignore")
+    except OSError:
+        return False
+
+    bib_markers = ("\\citation", "\\bibdata", "\\bibstyle")
+    return any(marker in content for marker in bib_markers)
+
+
+def build_document(texfile: Path) -> None:
+    stem = texfile.stem
+    aux_path = texfile.with_suffix(".aux")
+
+    try:
+        run_pdflatex(texfile)
+
+        if aux_requires_bibtex(aux_path):
+            run_bibtex(stem)
+
+        for _ in range(2):
+            run_pdflatex(texfile)
+
+    except subprocess.CalledProcessError:
+        fail("Error during LaTeX build. Please check the logs.")
+
+
+def delete_file(path: Path) -> None:
+    try:
+        if path.exists():
+            path.unlink()
+    except OSError as exc:
+        fail(f"Error: could not delete '{path}': {exc}")
+
+
+def clean_targets(
+    texfile: Path,
+    *,
+    keep_pdf: bool,
+    keep_bbl: bool,
+    delete_notes_bib: bool = True,
+) -> None:
+    delete_extensions = list(COMMON_DELETE_EXTENSIONS)
+
+    if not keep_bbl:
+        delete_extensions.append("bbl")
+
+    if not keep_pdf:
+        delete_extensions.append("pdf")
+
+    for ext in delete_extensions:
+        delete_file(texfile.with_suffix(f".{ext}"))
+
+    if delete_notes_bib:
+        delete_file(texfile.with_name(f"{texfile.stem}Notes.bib"))
+
+
+def determine_mode(args: argparse.Namespace) -> str:
+    flag_to_mode = {
+        "pdf": "pdf",
+        "arxiv": "arxiv",
+        "clean": "clean",
+    }
+
+    for flag, mode in flag_to_mode.items():
+        if getattr(args, flag):
+            return mode
+
+    return "default"
+
+
+def main() -> None:
+    args = parse_args()
+    texfile = Path(args.filename)
+
+    if texfile.suffix != ".tex":
+        fail("Error: input file must have .tex extension.")
+
+    if not texfile.is_file():
+        fail(f"Error: file not found: {texfile}")
+
+    mode = determine_mode(args)
+    config = MODE_CONFIG[mode]
+
+    if config["build"]:
+        build_document(texfile)
+
+    if config["clean"]:
+        clean_targets(
+            texfile,
+            keep_pdf=config["keep_pdf"],
+            keep_bbl=config["keep_bbl"],
+        )
+
+    print(config["message"])
+
+
+if __name__ == "__main__":
+    main()
