@@ -18,7 +18,7 @@ Modes:
     default     Build normally, keep all generated files
     --pdf       Build, then clean; keep .pdf
     --arxiv     Build, then clean; keep .bbl
-    --clean     Build, then clean
+    --clean     Clean only
 """
 
 from __future__ import annotations
@@ -76,12 +76,12 @@ MODE_CONFIG: Final[dict[str, ModeConfig]] = {
         "message": "Build successful. Cleaned for arXiv; kept .bbl.",
     },
     "clean": {
-        "build": True,
+        "build": False,
         "clean": True,
         "keep_pdf": False,
         "keep_bbl": False,
-        "message": "Build successful. Cleaned.",
-    },
+        "message": "Cleaned.",
+},
 }
 
 
@@ -105,7 +105,7 @@ def parse_args() -> argparse.Namespace:
     mode_group.add_argument(
         "--clean",
         action="store_true",
-        help="Build, then clean.",
+        help="Clean only.",
     )
 
     parser.add_argument("filename", help="Input .tex file")
