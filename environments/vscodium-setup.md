@@ -7,7 +7,7 @@ fontsize: 12pt
 <!--
 Author: Jesús Rubio
 Email: jesus@rubiojimenez.com
-Modified: 2026-02
+Modified: 2026-03
 -->
 
 # A personal VSCodium configuration
@@ -27,7 +27,7 @@ All currently installed extensions can be displayed by opening a terminal and ru
 In my current setup, this yields the following list (alphabetised):
 
     ecmel.vscode-html-css
-    hamza-aziane.obsidian-dark
+    huytd.github-light-monochrome
     james-yu.latex-workshop
     mads-hartmann.bash-ide-vscode
     ms-python.debugpy
@@ -57,6 +57,16 @@ For example, to install the Python extension:
 
     codium --install-extension ms-python.python
 
+To simultaneously install several extensions, use the following loop:
+
+    for ext in \
+        <extension-1-id> \
+        <extension-2-id> \
+        <extension-3-id>; \
+    do
+        codium --install-extension "$ext"
+    done
+
 ## 3. Working environment
 
 A set of useful settings for `settings.json` is as follows:
@@ -68,7 +78,8 @@ A set of useful settings for `settings.json` is as follows:
 
         "workbench.startupEditor": "none",
         "workbench.statusBar.visible": true,
-        "workbench.colorTheme": "Obsidian Dark",
+        "workbench.activityBar.location": "bottom",
+        "workbench.colorTheme": "GitHub Light Monochrome",
         "workbench.editor.defaultBinaryEditor": "default",
         "workbench.editor.empty.hint": "hidden",
 
