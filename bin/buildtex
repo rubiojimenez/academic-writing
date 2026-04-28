@@ -3,7 +3,6 @@
 # Author: Jesús Rubio
 # Email: jesus@rubiojimenez.com
 # Created: 2024-07
-# Modified: 2026-03
 
 """
 Compile LaTeX documents and optionally clean build artefacts.
@@ -36,7 +35,9 @@ COMMON_DELETE_EXTENSIONS: Final[list[str]] = [
     "end",
     "fdb_latexmk",
     "fls",
+    "lof",
     "log",
+    "lot",
     "nav",
     "out",
     "snm",
@@ -81,7 +82,7 @@ MODE_CONFIG: Final[dict[str, ModeConfig]] = {
         "keep_pdf": False,
         "keep_bbl": False,
         "message": "Cleaned.",
-},
+    },
 }
 
 
@@ -187,7 +188,7 @@ def build_document(texfile: Path) -> None:
 
     except subprocess.CalledProcessError:
         fail("Error during LaTeX build. Please check the logs.")
-        
+
 
 def delete_file(path: Path) -> None:
     try:
@@ -212,23 +213,30 @@ def clean_targets(
     if not keep_pdf:
         delete_extensions.append("pdf")
 
-    for ext in delete_extensions:
-        delete_file(texfile.with_suffix(f".{ext}"))
-
     parent = texfile.parent
+    folders = [parent, *[path for path in parent.iterdir() if path.is_dir()]]
 
-    for path in parent.glob("bu*.aux"):
-        delete_file(path)
+    for folder in folders:
+        for ext in delete_extensions:
+            for path in folder.glob(f"*.{ext}"):
+                delete_file(path)
 
-    for path in parent.glob("bu*.blg"):
-        delete_file(path)
-
-    if not keep_bbl:
-        for path in parent.glob("bu*.bbl"):
+        for path in folder.glob("*.synctex.gz"):
             delete_file(path)
+
+        for path in folder.glob("bu*.aux"):
+            delete_file(path)
+
+        for path in folder.glob("bu*.blg"):
+            delete_file(path)
+
+        if not keep_bbl:
+            for path in folder.glob("bu*.bbl"):
+                delete_file(path)
 
     if delete_notes_bib:
         delete_file(texfile.with_name(f"{texfile.stem}Notes.bib"))
+
 
 def determine_mode(args: argparse.Namespace) -> str:
     flag_to_mode = {
