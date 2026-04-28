@@ -1,1 +1,11 @@
-\newcommand{\jr}[1]{\textcolor{mygreen}{#1}}
+\newcommand{\jr}[1]{\textcolor{mygreen}{#1}}  % my comments
+\newcommand{\bs}[1]{\boldsymbol{#1}}
+
+\makeatletter                                 % nicer transpose
+\newcommand*{\transpose}{%
+  {\mathpalette\@transpose{}}%               
+}
+\newcommand*{\@transpose}[2]{%
+  \raisebox{\depth}{$\m@th#1\intercal$}%     
+}
+\makeatother
