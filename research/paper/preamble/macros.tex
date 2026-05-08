@@ -1,11 +1,13 @@
-\newcommand{\jr}[1]{\noindent \textcolor{mygreen}{#1}}  % my comments
-\newcommand{\bs}[1]{\boldsymbol{#1}}
+\newcommand{\comment}[1]{\textcolor{myred}{#1}}
+\newcommand{\jr}[1]{\textcolor{mygreen}{#1}}
 
-\makeatletter                                 % nicer transpose
+\makeatletter
 \newcommand*{\transpose}{%
-  {\mathpalette\@transpose{}}%               
+  {\mathpalette\@transpose{}}%
 }
 \newcommand*{\@transpose}[2]{%
-  \raisebox{\depth}{$\m@th#1\intercal$}%     
+  \raisebox{\depth}{$\m@th#1\intercal$}%
 }
 \makeatother
+
+\newcommand{\bs}[1]{\boldsymbol{#1}}
