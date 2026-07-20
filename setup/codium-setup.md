@@ -1,13 +1,13 @@
 ---
 geometry: margin=3cm
-mainfont: Helvetica
+mainfont: TeX Gyre Heros
 fontsize: 12pt
 ---
 
 <!--
 Author: Jesús Rubio
 Email: jesus@rubiojimenez.com
-Modified: 2026-03
+Modified: 2026-07
 -->
 
 # A personal VSCodium configuration
@@ -72,34 +72,37 @@ To simultaneously install several extensions, use the following loop:
 A set of useful settings for `settings.json` is as follows:
 
     {
+        "window.zoomLevel": -0.75,
+        "window.restoreWindows": "none",
+        "window.restoreFullscreen": false,
+
+        "workbench.startupEditor": "none",
+        "workbench.colorTheme": "GitHub Light Monochrome",
+        "workbench.statusBar.visible": true,
+        "workbench.activityBar.location": "bottom",
+        "workbench.editor.defaultBinaryEditor": "default",
+        "workbench.editor.empty.hint": "hidden",
+
         "editor.minimap.enabled": false,
         "editor.wordWrap": "on",
         "editor.defaultFormatter": "yzhang.markdown-all-in-one",
 
-        "workbench.startupEditor": "none",
-        "workbench.statusBar.visible": true,
-        "workbench.activityBar.location": "bottom",
-        "workbench.colorTheme": "GitHub Light Monochrome",
-        "workbench.editor.defaultBinaryEditor": "default",
-        "workbench.editor.empty.hint": "hidden",
-
         "explorer.confirmDelete": false,
         "explorer.confirmDragAndDrop": false,
 
-        "window.restoreWindows": "none",
-        "window.restoreFullscreen": false,
-
         "files.hotExit": "off",
 
-        "security.workspace.trust.untrustedFiles": "open",
+        "terminal.integrated.enableMultiLinePasteWarning": "never",
 
         "git.enableSmartCommit": true,
         "git.confirmSync": false,
         "git.autofetch": true,
 
-        "python.defaultInterpreterPath": "/your-path/python3",
+        "python.defaultInterpreterPath": "/usr/bin/python3",
 
-        "latex-workshop.view.pdf.viewer": "tab"
+        "latex-workshop.view.pdf.viewer": "tab",
+
+        "security.workspace.trust.untrustedFiles": "open"
     }
 
 **Note:** Adjust the Python interpreter path placeholder to match your local installation.
