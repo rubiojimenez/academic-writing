@@ -14,7 +14,7 @@ Modified: 2026-07
 
 **Jesús Rubio**  
 
-*2 September 2025, Guildford*
+*Guildford, 2 September 2025*
 
 This document describes my personal VSCodium setup and is shared for illustration rather than as a universal recommendation.
 
