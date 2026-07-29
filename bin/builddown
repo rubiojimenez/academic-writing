@@ -3,7 +3,6 @@
 # Author: Jesús Rubio
 # Email: jesus@rubiojimenez.com
 # Created: 2025-12
-# Modified: 2026-03
 
 """
 Compile one or more Markdown files to PDF using Pandoc + XeLaTeX.
