@@ -1,0 +1,53 @@
+#!/usr/bin/env python3
+
+# Author: Jesús Rubio
+# Email: jesus@rubiojimenez.com
+# Created: 2026-07
+
+"""
+gitush
+
+A small command-line utility to speed up routine Git commits when everything is
+expected to work correctly and no manual intervention is required.
+
+Workflow:
+    1. Ask for a commit message.
+    2. Ask for the branch name.
+    3. git add .
+    4. git commit -m "<message>"
+    5. git push origin <branch>
+
+If anything fails, the program stops immediately.
+"""
+
+import subprocess
+import sys
+
+
+def run(command):
+    if subprocess.run(command).returncode != 0:
+        print("\nError: Git has failed.")
+        print("Please check the messages above before proceeding.")
+        sys.exit(1)
+
+
+def main():
+    commit_message = input("Commit message: ").strip()
+    if not commit_message:
+        print("Error: Commit message cannot be empty.")
+        sys.exit(1)
+
+    branch = input("Branch name: ").strip()
+    if not branch:
+        print("Error: Branch name cannot be empty.")
+        sys.exit(1)
+
+    run(["git", "add", "."])
+    run(["git", "commit", "-m", commit_message])
+    run(["git", "push", "origin", branch])
+
+    print("Done.")
+
+
+if __name__ == "__main__":
+    main()
