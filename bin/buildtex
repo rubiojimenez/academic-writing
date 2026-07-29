@@ -210,9 +210,6 @@ def clean_targets(
     if not keep_bbl:
         delete_extensions.append("bbl")
 
-    if not keep_pdf:
-        delete_extensions.append("pdf")
-
     parent = texfile.parent
     folders = [parent, *[path for path in parent.iterdir() if path.is_dir()]]
 
@@ -233,6 +230,9 @@ def clean_targets(
         if not keep_bbl:
             for path in folder.glob("bu*.bbl"):
                 delete_file(path)
+
+    if not keep_pdf:
+        delete_file(texfile.with_suffix(".pdf"))
 
     if delete_notes_bib:
         delete_file(texfile.with_name(f"{texfile.stem}Notes.bib"))
