@@ -7,7 +7,7 @@
 """
 gitush
 
-A small command-line utility to speed up routine Git commits when everything is
+A command-line utility to speed up routine Git commits when everything is
 expected to work correctly and no manual intervention is required.
 
 Workflow:
