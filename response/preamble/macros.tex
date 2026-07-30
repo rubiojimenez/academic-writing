@@ -1,0 +1,22 @@
+\newcommand{\referee}[1]{%
+  \noindent\fcolorbox{black}{white}{%
+    \parbox[c]{\dimexpr\textwidth-2\fboxsep-2\fboxrule}{%
+      \textcolor{black}{\itshape #1}%
+    }%
+  }%
+}
+
+\newcommand{\responseitem}[2]{%
+  \begin{flushleft}
+    \justify
+    \textcolor{myblue}{\textbf{#1:}} #2
+  \end{flushleft}
+}
+
+\newcommand{\reply}[1]{%
+  \responseitem{Reply}{#1}
+}
+
+\newcommand{\changes}[1]{%
+  \responseitem{Changes}{#1}
+}
