@@ -1,4 +1,10 @@
 \newcommand{\referee}[1]{%
+    \begin{center}
+        \textbf{Referee #1}
+    \end{center}
+}
+
+\newcommand{\comment}[1]{%
   \noindent\fcolorbox{black}{white}{%
     \parbox[c]{\dimexpr\textwidth-2\fboxsep-2\fboxrule}{%
       \textcolor{black}{\itshape #1}%
