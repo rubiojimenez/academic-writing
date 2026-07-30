@@ -11,10 +11,9 @@ A command-line utility to speed up routine Git commits.
 
 Workflow:
     1. Ask for a commit message.
-    2. Ask for the branch name.
-    3. git add .
-    4. git commit -m "<message>"
-    5. git push origin <branch>
+    2. git add .
+    3. git commit -m "<message>"
+    4. git push
 """
 
 import subprocess
@@ -23,25 +22,19 @@ import sys
 
 def run(command):
     if subprocess.run(command).returncode != 0:
-        print("\nError: Git has failed.")
-        print("Please check the messages above before proceeding.")
+        print("\nError: Git has failed. Please check the messages above.")
         sys.exit(1)
 
 
 def main():
     commit_message = input("Commit message: ").strip()
     if not commit_message:
-        print("Error: Commit message cannot be empty.")
-        sys.exit(1)
-
-    branch = input("Branch name: ").strip()
-    if not branch:
-        print("Error: Branch name cannot be empty.")
+        print("Error: commit message cannot be empty.")
         sys.exit(1)
 
     run(["git", "add", "."])
     run(["git", "commit", "-m", commit_message])
-    run(["git", "push", "origin", branch])
+    run(["git", "push"])
 
     print("Done.")
 
