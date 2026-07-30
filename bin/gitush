@@ -7,8 +7,7 @@
 """
 gitush
 
-A command-line utility to speed up routine Git commits when everything is
-expected to work correctly and no manual intervention is required.
+A command-line utility to speed up routine Git commits.
 
 Workflow:
     1. Ask for a commit message.
@@ -16,8 +15,6 @@ Workflow:
     3. git add .
     4. git commit -m "<message>"
     5. git push origin <branch>
-
-If anything fails, the program stops immediately.
 """
 
 import subprocess
