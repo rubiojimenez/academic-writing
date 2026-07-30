@@ -10,7 +10,7 @@ gitush
 A command-line utility to speed up routine Git commits.
 
 Workflow:
-    1. Ask for a commit message.
+    1. Write a commit message when prompted.
     2. git add .
     3. git commit -m "<message>"
     4. git push
