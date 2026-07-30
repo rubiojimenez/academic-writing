@@ -1,0 +1,121 @@
+#!/usr/bin/env python3
+
+# Author: Jesús Rubio
+# Email: jesus@rubiojimenez.com
+# Created: 2026-07
+
+# Launches my KDE Plasma desktop workspace by opening predefined Dolphin
+# windows with split views and VSCodium instances.
+#
+# Dolphin is preconfigured to open maximised, with the Terminal panel 
+# at the bottom and the Details view using small monochromatic icons.
+# 
+# VSCodium is likewise preconfigured to open maximised, with the Terminal
+# panel at the bottom.
+#
+# The paths in the `workspace` dictionary should be adapted to match the user's 
+# filesystem.
+
+from pathlib import Path
+from shutil import which
+from subprocess import DEVNULL, Popen
+import sys
+import time
+
+
+home = Path.home()
+
+workspace = {
+    "incubator": home / "sync-works/incubator",
+    "overleaf": home / "sync-works/research/overleaf",
+    "processing": home / "sync-life/miscellany/processing",
+    "projects": home / "sync-works/research/projects",
+    "qcs": home / "sync-works/research/qcs",
+    "toolkit": home / "sync-works/tooling/writing-toolkit",
+    "website": home / "sync-works/website",
+    "writing": home / "sync-works/writing",
+}
+
+dolphin_folders = [
+    (
+        workspace["projects"],
+        workspace["writing"],
+    ),
+    (
+        workspace["overleaf"],
+        workspace["qcs"],
+    ),
+    (
+        workspace["incubator"],
+        workspace["processing"],
+    ),
+]
+
+codium_dirs = [
+    workspace["website"],
+    workspace["toolkit"],
+]
+
+
+def check_executable(command: str) -> None:
+    if which(command) is None:
+        raise RuntimeError(f"executable not found: {command}")
+
+
+def check_directory(path: Path) -> None:
+    if not path.is_dir():
+        raise RuntimeError(f"directory not found: {path}")
+
+
+def launch(command: list[str]) -> None:
+    Popen(
+        command,
+        stdout=DEVNULL,
+        stderr=DEVNULL,
+        start_new_session=True,
+    )
+
+
+def main() -> int:
+    try:
+        check_executable("dolphin")
+        check_executable("codium")
+
+        for left, right in dolphin_folders:
+            check_directory(left)
+            check_directory(right)
+
+        for directory in codium_dirs:
+            check_directory(directory)
+
+        for left, right in dolphin_folders:
+            launch(
+                [
+                    "dolphin",
+                    "--new-window",
+                    "--split",
+                    str(left),
+                    str(right),
+                ]
+            )
+            time.sleep(0.5)
+
+        for directory in codium_dirs:
+            launch(
+                [
+                    "codium",
+                    "--new-window",
+                    str(directory),
+                ]
+            )
+            time.sleep(0.5)
+
+    except RuntimeError as error:
+        print(f"Error: {error}", file=sys.stderr)
+        return 1
+
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

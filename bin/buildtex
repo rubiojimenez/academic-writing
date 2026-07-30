@@ -156,8 +156,7 @@ def aux_requires_bibtex(aux_path: Path) -> bool:
     except OSError:
         return False
 
-    bib_markers = ("\\citation", "\\bibdata", "\\bibstyle")
-    return any(marker in content for marker in bib_markers)
+    return "\\bibdata" in content and "\\bibstyle" in content
 
 
 def get_bibunit_stems(texfile: Path) -> list[str]:
@@ -210,26 +209,8 @@ def clean_targets(
     if not keep_bbl:
         delete_extensions.append("bbl")
 
-    parent = texfile.parent
-    folders = [parent, *[path for path in parent.iterdir() if path.is_dir()]]
-
-    for folder in folders:
-        for ext in delete_extensions:
-            for path in folder.glob(f"*.{ext}"):
-                delete_file(path)
-
-        for path in folder.glob("*.synctex.gz"):
-            delete_file(path)
-
-        for path in folder.glob("bu*.aux"):
-            delete_file(path)
-
-        for path in folder.glob("bu*.blg"):
-            delete_file(path)
-
-        if not keep_bbl:
-            for path in folder.glob("bu*.bbl"):
-                delete_file(path)
+    for ext in delete_extensions:
+        delete_file(texfile.with_suffix(f".{ext}"))
 
     if not keep_pdf:
         delete_file(texfile.with_suffix(".pdf"))
