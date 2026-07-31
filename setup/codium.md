@@ -5,26 +5,22 @@ fontsize: 12pt
 ---
 
 <!--
-Author: Jesús Rubio
 Email: jesus@rubiojimenez.com
-Modified: 2026-07
 -->
 
-# A personal VSCodium configuration
+# A personal VSCodium setup
 
 **Jesús Rubio**  
 
 *Guildford, 2 September 2025*
 
-This document describes my personal VSCodium setup and is shared for illustration rather than as a universal recommendation.
-
 ## 1. Installed extensions
 
-All currently installed extensions can be displayed by opening a terminal and running:
+All installed extensions can be displayed by opening a terminal and running:
 
     codium --list-extensions
 
-In my current setup, this yields the following list (alphabetised):
+In my setup, this yields, in alphabetical order, the following list:
 
     ecmel.vscode-html-css
     huytd.github-light-monochrome
@@ -49,11 +45,11 @@ In my current setup, this yields the following list (alphabetised):
 
 ## 2. Installing extensions
 
-A single extension identified by ID can be installed as:
+A single extension can be installed as:
 
     codium --install-extension <extension-id>
 
-For example, to install the Python extension:
+For example:
 
     codium --install-extension ms-python.python
 
