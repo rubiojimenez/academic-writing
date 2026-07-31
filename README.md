@@ -93,7 +93,7 @@ It is intended for the case where everything is ready to go.
 
 `sortbib`: Sorts BibTeX databases alphabetically by entry key and orders the fields within each entry.
 
-I use this less nowadays in favour of JabRef, but it is still useful when handling master `.bib` files directly.
+I use this less nowadays in favour of JabRef, but it is still useful when handling BibTeX files directly.
 
 `startop`: Launches my preferred working environment. 
 
