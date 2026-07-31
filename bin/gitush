@@ -5,15 +5,11 @@
 # Created: 2026-07
 
 """
-gitush
+Command-line utility to speed up routine Git commits.
 
-A command-line utility to speed up routine Git commits.
-
-Workflow:
-    1. Write a commit message when prompted.
-    2. git add .
-    3. git commit -m "<message>"
-    4. git push
+Usage:
+    Run the script, enter a commit message when prompted,
+    and it will stage all changes, create a commit, and push it to the current branch.
 """
 
 import subprocess

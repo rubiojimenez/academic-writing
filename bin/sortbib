@@ -4,7 +4,13 @@
 # Email: jesus@rubiojimenez.com
 # Created: 2026-02
 
-# Script to sort BibTeX (.bib) files by citation key and sort fields within each entry
+"""
+Sort a BibTeX database by entry key and reorder the fields within each entry.
+
+Usage:
+Run the script with the name of a BibTeX file, with or without the .bib extension.
+The file is sorted in place.
+"""
 
 import sys
 import os
@@ -35,7 +41,7 @@ def sort_bibtex_file(input_file, output_file):
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
-        print("Usage: sortbib <name>")
+        print("Usage: sortbib <file[.bib]>")
         sys.exit(1)
 
     name = sys.argv[1]

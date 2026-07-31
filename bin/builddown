@@ -5,12 +5,16 @@
 # Created: 2025-12
 
 """
-Compile one or more Markdown files to PDF using Pandoc + XeLaTeX.
+Compile one or more Markdown files to PDF using Pandoc and XeLaTeX.
 
-Examples:
+Usage:
     builddown file.md
     builddown --meta meta.yaml header.md 20*.md
     builddown --meta meta.yaml header.md 20*.md -o file.pdf
+
+Behaviour:
+    With one input file, the output uses the same name with a .pdf extension.
+    With multiple input files, the default output is output.pdf.
 """
 
 import argparse

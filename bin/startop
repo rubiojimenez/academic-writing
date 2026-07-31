@@ -4,17 +4,19 @@
 # Email: jesus@rubiojimenez.com
 # Created: 2026-07
 
-# Launches my KDE Plasma desktop workspace by opening predefined Dolphin
-# windows with split views and VSCodium instances.
-#
-# Dolphin is preconfigured to open maximised, with the Terminal panel 
-# at the bottom and the Details view using small monochromatic icons.
-# 
-# VSCodium is likewise preconfigured to open maximised, with the Terminal
-# panel at the bottom.
-#
-# The paths in the `workspace` dictionary should be adapted to match the user's 
-# filesystem.
+"""
+Launch a predefined KDE Plasma workspace using Dolphin and VSCodium.
+
+Usage:
+    Run the script to open the configured Dolphin split-view windows and
+    VSCodium instances.
+
+Configuration:
+    Adapt the paths in the workspace dictionary to match the local filesystem.
+
+    Dolphin and VSCodium should be configured separately with the preferred
+    window layout, terminal panels, views, and icon settings.
+"""
 
 from pathlib import Path
 from shutil import which

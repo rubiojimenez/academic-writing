@@ -14,10 +14,10 @@ Usage:
     buildtex --clean file.tex
 
 Modes:
-    default     Build normally, keep all generated files
-    --pdf       Build, then clean; keep .pdf
-    --arxiv     Build, then clean; keep .bbl
-    --clean     Clean only
+    default     Build normally; keep all generated files
+    --pdf       Build, then clean; keep the PDF
+    --arxiv     Build, then clean; keep the BBL
+    --clean     Clean generated files only
 """
 
 from __future__ import annotations
