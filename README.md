@@ -28,7 +28,7 @@ Depending on which templates and utilities you use, you may need
 
 Additionally,
 
-- `startop` requires Dolphin and VSCodium (or VS Code).
+- `startop` requires Dolphin and VSCodium.
 
 ## Templates
 
