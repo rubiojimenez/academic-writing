@@ -1,6 +1,6 @@
 ---
 geometry: margin=3cm
-mainfont: TeX Gyre Heros
+mainfont: Libertinus Serif
 fontsize: 12pt
 ---
 
