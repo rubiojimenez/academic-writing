@@ -99,11 +99,6 @@ I use this less nowadays in favour of JabRef, but it is still useful when handli
 
 My workflow is essentially filesystem-first, so I usually work from Dolphin, using its integrated terminal and launching external editors as needed.
 
-## Development environment
-
-I also provide my VSCodium configuration. 
-It serves as a reference for rebuilding my development environment on a new machine, though parts of it may also be useful to others.
-
 ## Contributing
 
 Suggestions, improvements and additional templates are welcome.
