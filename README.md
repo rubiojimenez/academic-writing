@@ -4,7 +4,7 @@ This is a curated collection of LaTeX templates and document-building utilities 
 
 I wrote these tools for my own use. 
 I rely on them daily and refine them as I go. 
-Some tools still reflect my personal workflow, but should be straightforward to adapt.
+Some tools still tailored to my personal workflow, but should be straightforward to adapt.
 
 The repository also includes my VSCodium setup, which I use for Python, HTML, CSS, and occasionally LaTeX and Markdown. 
 
