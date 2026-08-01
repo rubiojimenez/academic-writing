@@ -38,6 +38,7 @@ The repository contains LaTeX templates for
 - referee responses;
 - conference abstracts;
 - abstract collections;
+- research proposals;
 - cover letters.
 
 Each template includes both
