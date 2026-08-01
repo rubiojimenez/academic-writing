@@ -1,0 +1,30 @@
+\definecolor{mygreen}{RGB}{18,95,18}
+\definecolor{myblue}{RGB}{34,31,150}
+
+\graphicspath{{figures/}}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.16em}
+\setlength{\headheight}{14pt}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Candidate}
+\chead{Document}
+\rhead{\hlight{Acronym}}
+\cfoot{\thepage}
+
+\renewcommand{\footrulewidth}{0.4pt}
+
+\newlength{\bibitemsep}
+\setlength{\bibitemsep}{0.05\baselineskip}
+
+\let\oldthebibliography\thebibliography
+\renewcommand{\thebibliography}[1]{%
+  \oldthebibliography{#1}%
+  \small
+  \setlength{\itemsep}{0pt}%
+  \setlength{\parskip}{\bibitemsep}%
+}
+
+\renewcommand{\refname}{\normalsize References}

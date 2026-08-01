@@ -1,0 +1,16 @@
+\newcommand{\hlight}[1]{\textcolor{mygreen}{\textbf{#1}}}
+
+\makeatletter
+\newcommand*{\transpose}{%
+  {\mathpalette\@transpose{}}%
+}
+\newcommand*{\@transpose}[2]{%
+  \raisebox{\depth}{$\m@th#1\intercal$}%
+}
+\makeatother
+
+\newcommand{\bs}[1]{\boldsymbol{#1}}
+\newcommand{\dd}{\mathop{}\!\mathrm{d}}
+\newcommand{\ket}[1]{\lvert #1\rangle}
+\newcommand{\bra}[1]{\langle #1\rvert}
+\newcommand{\ketbra}[2]{\lvert #1\rangle\!\langle #2\rvert}
