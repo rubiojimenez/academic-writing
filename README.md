@@ -11,7 +11,7 @@ The repository also includes my VSCodium setup, which I use for Python, HTML, CS
 For focused writing I prefer Texmaker, while collaborative projects tend to end up on Overleaf.
 For Markdown and other plain text files I prefer Kate.
 I sometimes brainstorm in Writer because it feels more like working on paper.
-I have little to no automation for these additional workflows, and they are therefore not represented here.
+I have no additional automation for these additional workflows, and they are therefore not represented here.
 
 At present, the repository focuses on scientific writing, though I expect it to evolve into a more general writing toolkit over time.
 
@@ -19,16 +19,15 @@ At present, the repository focuses on scientific writing, though I expect it to 
 
 Depending on which templates and utilities you use, you may need
 
-- TeX Live (or another LaTeX distribution);
+- TeX Live;
 - XeLaTeX;
-- BibTeX;
 - Pandoc;
-- Python 3 and the required modules;
+- Python 3 with the required modules;
 - Git.
 
 Additionally,
 
-- `startop` requires Dolphin and VSCodium.
+- `startop` uses Dolphin and VSCodium.
 
 ## Templates
 
@@ -64,7 +63,7 @@ preamble/
 └── packages.tex
 ```
 
-This keeps the main document more focused on content and makes templates easier to use and maintain. 
+This keeps the main document focused on content and makes templates easier to use and maintain. 
 
 I am gradually migrating older templates to this structure.
 
@@ -72,7 +71,7 @@ I am gradually migrating older templates to this structure.
 
 Helper scripts are also provided for automating repetitive tasks:
 
-`builddown`: Converts one or more Markdown documents into PDF using Pandoc and XeLaTeX.
+`builddown`: Converts Markdown documents into PDF using Pandoc and XeLaTeX.
 
 `buildtex`: A wrapper around the standard LaTeX toolchain supporting
 
@@ -102,7 +101,7 @@ My workflow is essentially filesystem-first, so I usually work from Dolphin, usi
 
 ## Contributing
 
-Suggestions, improvements and additional templates are welcome.
+Suggestions are welcome, whether through issues, pull requests, or contributions of additional templates.
 
 ## License
 
