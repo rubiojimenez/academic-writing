@@ -15,19 +15,21 @@ I have no additional automation for these additional workflows, and they are the
 
 At present, the repository focuses on scientific writing, though I expect it to evolve into a more general writing toolkit over time.
 
-## Requirements
+## A modular writing architecture
 
-Depending on which templates and utilities you use, you may need
+For my LaTeX documents, I have adopted a modular preamble that separates packages, configuration and macros into dedicated files:
 
-- TeX Live;
-- XeLaTeX;
-- Pandoc;
-- Python 3 with the required modules;
-- Git.
+```text
+preamble/
+├── config.tex
+├── macros.tex
+└── packages.tex
+```
 
-Additionally,
+This keeps the main document focused on content and makes templates easier to use and maintain. 
 
-- `startop` uses Dolphin and VSCodium.
+I am gradually migrating older templates to this structure.
+
 
 ## Templates
 
@@ -52,20 +54,6 @@ to provide a quick preview of the final document.
 I use the Libertinus typeface together with the corresponding Libertinus math fonts. 
 Besides liking its appearance, it is open source, widely available, and produces consistent output across Linux, macOS and Windows.
 
-## A modular writing architecture
-
-For my LaTeX documents, I have adopted a modular preamble that separates packages, configuration and macros into dedicated files:
-
-```text
-preamble/
-├── config.tex
-├── macros.tex
-└── packages.tex
-```
-
-This keeps the main document focused on content and makes templates easier to use and maintain. 
-
-I am gradually migrating older templates to this structure.
 
 ## Command-line utilities
 
@@ -98,6 +86,20 @@ I use this less nowadays in favour of JabRef, but it is still useful when handli
 `startop`: Launches my preferred working environment. 
 
 My workflow is essentially filesystem-first, so I usually work from Dolphin, using its integrated terminal and launching external editors as needed.
+
+## Requirements
+
+Depending on which templates and utilities you use, you may need
+
+- TeX Live;
+- XeLaTeX;
+- Pandoc;
+- Python 3 with the required modules;
+- Git.
+
+Additionally,
+
+- `startop` uses Dolphin and VSCodium.
 
 ## Contributing
 
