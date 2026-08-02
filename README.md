@@ -10,7 +10,7 @@ The repository also includes my VSCodium setup, which I use for Python, HTML, CS
 For focused writing I prefer Texmaker, while collaborative projects tend to end up on Overleaf.
 For Markdown and other plain text files I prefer Kate.
 I sometimes brainstorm in Writer because it feels more like working on paper.
-I have no automation for these additional workflows, and they are therefore not represented here.
+I have no automation for these workflows, so they are not represented here.
 
 At present, the repository focuses on scientific writing, though I expect it to evolve into a more general writing toolkit over time.
 
@@ -50,8 +50,8 @@ main.pdf
 
 are provided to allow a quick preview of the final output.
 
-I use the Libertinus typeface together with the corresponding Libertinus math fonts. 
-Besides liking its appearance, it is open source, widely available, and produces consistent output across Linux, macOS and Windows.
+I use the Libertinus typeface together with the corresponding Libertinus math font. 
+Besides liking their appearance, they are open source, widely available, and produce consistent output across Linux, macOS and Windows.
 
 
 ## Command-line utilities
@@ -87,17 +87,17 @@ My workflow is essentially filesystem-first, so I usually work from Dolphin, usi
 
 ## Requirements
 
-Depending on which templates and utilities you use, you may need
+Depending on which templates and utilities you use, the following may be required:
 
 - TeX Live;
 - XeLaTeX;
 - Pandoc;
-- Python 3 with the required modules;
+- Python 3 with the required modules; and
 - Git.
 
 Additionally,
 
-- `startop` uses Dolphin and VSCodium.
+- `startop` requires Dolphin and VSCodium.
 
 ## Contributing
 
