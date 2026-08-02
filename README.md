@@ -1,23 +1,22 @@
 # Writing Toolkit
 
-This is a curated collection of LaTeX templates and document-building utilities for **streamlining writing**.
+Curated collection of LaTeX templates and document-building utilities for **streamlining writing**.
 
-I wrote these tools for my own use. 
-I rely on them daily and refine them as I go. 
-Some tools still tailored to my personal workflow, but should be straightforward to adapt.
+I wrote these tools for my own use and I refine them as I go. 
+Some are still tailored to my personal workflow, but should be straightforward to adapt.
 
 The repository also includes my VSCodium setup, which I use for Python, HTML, CSS, and occasionally LaTeX and Markdown. 
 
 For focused writing I prefer Texmaker, while collaborative projects tend to end up on Overleaf.
 For Markdown and other plain text files I prefer Kate.
 I sometimes brainstorm in Writer because it feels more like working on paper.
-I have no additional automation for these additional workflows, and they are therefore not represented here.
+I have no automation for these additional workflows, and they are therefore not represented here.
 
 At present, the repository focuses on scientific writing, though I expect it to evolve into a more general writing toolkit over time.
 
 ## A modular writing architecture
 
-For my LaTeX documents, I have adopted a modular preamble that separates packages, configuration and macros into dedicated files:
+For my LaTeX documents, I have adopted a modular preamble separating packages, configuration and macros:
 
 ```text
 preamble/
@@ -26,30 +25,30 @@ preamble/
 └── packages.tex
 ```
 
-This keeps the main document focused on content and makes templates easier to use and maintain. 
+This makes templates easier to use and maintain. 
 
 I am gradually migrating older templates to this structure.
 
 
 ## Templates
 
-The repository contains LaTeX templates for
+The document types covered are
 
 - journal articles;
 - referee responses;
 - conference abstracts;
 - abstract collections;
-- research proposals;
+- research proposals; and
 - cover letters.
 
-Each template includes both
+For each document, both
 
 ```text
 main.tex
 main.pdf
 ```
 
-to provide a quick preview of the final document.
+are provided to allow a quick preview of the final output.
 
 I use the Libertinus typeface together with the corresponding Libertinus math fonts. 
 Besides liking its appearance, it is open source, widely available, and produces consistent output across Linux, macOS and Windows.
@@ -63,11 +62,10 @@ Helper scripts are also provided for automating repetitive tasks:
 
 `buildtex`: A wrapper around the standard LaTeX toolchain supporting
 
-- PDF compilation;
-- BibTeX (including bibunits);
-- project cleanup;
-- arXiv-ready auxiliary files;
-- retaining intermediate files.
+- PDF compilation with BibTeX, including bibunits;
+- generation of files for arXiv submission;
+- project cleanup; and
+- standard compilation while retaining intermediate files.
 
 `gitush`: A wrapper around
 
@@ -79,7 +77,7 @@ git push
 
 It is intended for the case where everything is ready to go.
 
-`sortbib`: Sorts BibTeX databases alphabetically by entry key and orders the fields within each entry.
+`sortbib`: Sorts BibTeX databases alphabetically by entry key and orders the fields likewise within each entry.
 
 I use this less nowadays in favour of JabRef, but it is still useful when handling BibTeX files directly.
 
@@ -103,7 +101,7 @@ Additionally,
 
 ## Contributing
 
-Suggestions are welcome, whether through issues, pull requests, or contributions of additional templates.
+Both suggestions and contributions of additional templates are welcome.
 
 ## License
 
