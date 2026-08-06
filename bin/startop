@@ -28,34 +28,26 @@ import time
 home = Path.home()
 
 workspace = {
-    "incubator": home / "sync-works/incubator",
-    "overleaf": home / "sync-works/research/overleaf",
+    "workspace": home / "sync-works/research/workspace",
     "processing": home / "sync-life/miscellany/processing",
-    "projects": home / "sync-works/research/projects",
+    "overleaf": home / "sync-works/research/overleaf",
     "qcs": home / "sync-works/research/qcs",
-    "toolkit": home / "sync-works/tooling/writing-toolkit",
     "website": home / "sync-works/website",
-    "writing": home / "sync-works/writing",
 }
 
 dolphin_folders = [
     (
-        workspace["projects"],
-        workspace["writing"],
+        workspace["workspace"],
+        workspace["processing"],
     ),
     (
         workspace["overleaf"],
         workspace["qcs"],
     ),
-    (
-        workspace["incubator"],
-        workspace["processing"],
-    ),
 ]
 
 codium_dirs = [
     workspace["website"],
-    workspace["toolkit"],
 ]
 
 
