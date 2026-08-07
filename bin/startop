@@ -28,7 +28,7 @@ import time
 home = Path.home()
 
 workspace = {
-    "workspace": home / "sync-works/research/workspace",
+    "workspace": home / "sync-works/workspace",
     "processing": home / "sync-life/miscellany/processing",
     "overleaf": home / "sync-works/research/overleaf",
     "qcs": home / "sync-works/research/qcs",
